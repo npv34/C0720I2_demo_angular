@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header">
+    Users
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-2">
+        <button (click)="showHideAvatar()" class="btn btn-success">Show/Hide Avatar</button>
+      </div>
+      <div class="col-12 col-md-10">
+        <input type="search" class="form-control" (keyup)="search($event)">
+      </div>
+    </div>
+    <table class="table mt-4">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" [hidden]="showHideImage">Avatar</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of dataUserFilter; let i = index">
+        <th scope="row">{{ i + 1}}</th>
+        <th scope="row" [hidden]="showHideImage"><img  [width]="sizeImage" [src]="user.avatar" alt=""></th>
+        <td>{{ user.email }}</td>
+        <td>{{ user.address}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="delete(user.id)">Delete</button></td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
